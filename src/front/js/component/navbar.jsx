@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Context from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   //<a href="./demo.html">
+  const { store, actions } = useContext(Context)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
