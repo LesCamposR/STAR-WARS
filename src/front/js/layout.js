@@ -34,21 +34,16 @@ const Layout = () => {
           <Routes>
             {/* <Route element={<Home />} path="/" /> */}
             {/* <Route element={<ToDo />} path="/" /> */}
-
             <Route element={<StarWars />} path="/" />
             <Route element={<Login />} path="/login" />
             <Route element={<Info />} path="/info" />
+            <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:thetitle" />
             <Route element={<SinglePeople />} path="/people/:uid" />
             <Route element={<SinglePlanets />} path="/planets/:uid" />
             <Route element={<SingleVehicles />} path="/vehicules/:uid" />
             <Route element={<h1>Not found! 404</h1>} path="*" />
           </Routes>
-          <Route element={<Demo />} path="/demo" />
-          <Route
-            element={<h1>EStoy en la vista de 4Geeks</h1>}
-            path="/4geeks"
-          />
           <Footer />
         </ScrollToTop>
       </BrowserRouter>

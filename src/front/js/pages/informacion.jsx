@@ -4,11 +4,11 @@ import WithAuth from "../component/Auth/withAuth";
 
 const Info = () => {
     const { store, actions } = useContext(Context)
-    const [infoUsuario, setInfoUsuario] = useState("None")
+    const [infoUsuario, setInfoUsuario] = useState("ninguno")
 
     useEffect(() => {
         const cargaDatos = async () => {
-            let { respuestaJson, response } = await actions.useFetch("/protected")
+            let { respuestaJson, response } = await actions.useFetch("/favorites")
             console.log(response.ok)
             console.log(respuestaJson)
             if (response.ok) {
