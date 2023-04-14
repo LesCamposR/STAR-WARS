@@ -6,10 +6,9 @@ import { Home } from "./pages/home";
 import { ToDo } from "./pages/todos.jsx";
 
 import StarWars from "./pages/starWars.jsx";
-import SinglePeople from "./pages/singlePeople.jsx";
-import SinglePlanets from "./pages/SiglePlanets.jsx";
-import SingleVehicles from "./pages/SigleVehicles.jsx";
-
+import SinglePeople from "./component/Singlepeople.jsx";
+import SinglePlanets from "./component/Singleplanets.jsx";
+import SingleVehicles from "./component/Singlevehicles.jsx";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";

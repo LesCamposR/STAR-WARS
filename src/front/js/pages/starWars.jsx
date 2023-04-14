@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import CardPeople from "../component/cardPeople.jsx";
-import Planets from "../component/planets.jsx";
-import Vehicles from "../component/vehicles.jsx";
+import CardPlanets from "../component/cardPlanets.jsx";
+import CardVehicles from "../component/cardVehicles.jsx";
 import { todoActions } from "../store/todos";
 
 const StarWars = () => {
@@ -77,51 +77,56 @@ const StarWars = () => {
     useEffect(() => { }, [listVehicles])
     useEffect(() => { }, [listPlanets])
 
-    return (<>
+    return (
+        <>
+            <h1 className="text-danger">Characters</h1>
+            {listPeople && listPeople.length > 0 ? (
+                <>
+                    {listPeople.map((item, index) => {
+                        return (
+                            <CardPeople
+                                key={item.uid}
+                                name={item.name}
+                                uid={item.uid} />
+                        );
+                    })}
+                </>
+            ) : (
+                <></>
+            )}
+            <h1 className="text-danger">Planets</h1>
+            {listPlanet && listPlanet.length > 0 ? (
+                <>
+                    {listPlanet.map((item, index) => {
+                        return (
+                            <CardPlanets
+                                key={item.uid}
+                                name={item.name}
+                                uid={item.uid} />
+                        );
+                    })}
+                </>
+            ) : (
+                <></>
+            )}
+            <h1 className="text-danger">Vehicles</h1>
+            {listVehicle && listVehicle.length > 0 ? (
+                <>
+                    {listVehicle.map((item, index) => {
+                        return (
+                            <CardVehicles
+                                key={item.uid}
+                                name={item.name}
+                                uid={item.uid} />
+                        );
+                    })}
+                </>
+            ) : (
+                <></>
+            )}
+        </>
+    )
+};
 
-        <h2 className="m-2 bg-warning">People</h2>
-        <div>
-            <ul className="d-flex">
-                {listPeople && listPeople.length > 0 ?
-                    <>
-                        {listPeople.map((item, index) => {
-                            return <div className="p-3 ">
-                                <CardPeople name={item.name} uid={item.uid} />
-                            </div>
-                        })}
-                    </> : <></>}
-            </ul>
-        </div>
-        <br />
-        <h2>Vehicles</h2>
-        <div>
-            <ul className="d-flex ">
-                {listVehicles && listVehicles.length > 0 ?
-                    <>
-                        {listVehicles.map((item, index) => {
-                            return <li className="p-3">
-                                <Vehicles name={item.name} uid={item.uid} />
-                            </li>
-                        })}
-                    </> : <></>}
-            </ul>
-        </div>
-        <br />
-        <h2>Planets</h2>
-        <div>
-            <ul className="d-flex">
-                {listPlanets && listPlanets.length > 0 ?
-                    <>
-                        {listVehicles.map((item, index) => {
-                            return <li className="p-3">
-                                <Planets name={item.name} uid={item.uid} />
-                            </li>
-                        })}
-                    </> : <></>}
-            </ul>
-        </div>
 
-    </>)
-}
-
-export default StarWars
+export default StarWars;
