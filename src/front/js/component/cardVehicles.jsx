@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const CardVehicle = (props) => {
+const CardVehicles = (props) => {
     const { store, actions } = useContext(Context)
 
     return (
@@ -36,4 +36,4 @@ const CardVehicle = (props) => {
     );
 };
 
-export default CardVehicle;
+export default CardVehicles;

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const CardPlanet = (props) => {
+const CardPlanets = (props) => {
     const { store, actions } = useContext(Context)
 
     return (
@@ -39,4 +39,4 @@ const CardPlanet = (props) => {
     );
 };
 
-export default CardPlanet;
+export default CardPlanets;

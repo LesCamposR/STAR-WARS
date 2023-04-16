@@ -6,18 +6,16 @@ import { Home } from "./pages/home";
 import { ToDo } from "./pages/todos.jsx";
 
 import StarWars from "./pages/starWars.jsx";
-import SinglePeople from "./component/Singlepeople.jsx";
-import SinglePlanets from "./component/Singleplanets.jsx";
-import SingleVehicles from "./component/Singlevehicles.jsx";
+import People from "./component/people.jsx";
+import Planets from "./component/planets.jsx";
+import Vehicles from "./component/vehicles.jsx ";
+
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
-
-import Login from "./pages/login.jsx";
-import Info from "./pages/informacion.jsx";
 
 //create your first component
 const Layout = () => {
@@ -31,16 +29,12 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            {/* <Route element={<Home />} path="/" /> */}
-            {/* <Route element={<ToDo />} path="/" /> */}
             <Route element={<StarWars />} path="/" />
-            <Route element={<Login />} path="/login" />
-            <Route element={<Info />} path="/info" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:thetitle" />
-            <Route element={<SinglePeople />} path="/people/:uid" />
-            <Route element={<SinglePlanets />} path="/planets/:uid" />
-            <Route element={<SingleVehicles />} path="/vehicules/:uid" />
+            <Route element={<People />} path="/people/:uid" />
+            <Route element={<Planets />} path="/planets/:uid" />
+            <Route element={<Vehicles />} path="/vehicles/:uid" />
             <Route element={<h1>Not found! 404</h1>} path="*" />
           </Routes>
           <Footer />

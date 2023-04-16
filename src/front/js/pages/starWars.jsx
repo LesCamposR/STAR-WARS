@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import CardPeople from "../component/cardPeople.jsx";
-import CardPlanets from "../component/cardPlanets.jsx";
-import CardVehicles from "../component/cardVehicles.jsx";
-import { todoActions } from "../store/todos";
+import CardPeople from "../component/CardPeople.jsx"
+import CardPlanet from "../component/CardPlanets.jsx";
+import CardVehicles from "../component/cardVehicles.jsx"
 
 const StarWars = () => {
     const { store, actions } = useContext(Context)
-    const [listPeople, setListPeople] = useState({})
-    const [listVehicles, setListVehicles] = useState({})
-    const [listPlanets, setListPlanets] = useState({})
+    const [ListPeople, setListPeople] = useState({})
+    const [ListVehicles, setListVehicles] = useState({})
+    const [ListPlanets, setListPlanets] = useState({})
 
     //se ejecuta la primera vez que se reenderiza el componente
     useEffect(() => {
@@ -34,24 +33,25 @@ const StarWars = () => {
             }
         }
 
-        //cargaDatos()
+        cargaDatos()
+
         const cargaParalelo = async () => {
             let { respuestaJson, response } = await actions.useFetch("/people")
             if (response.ok) {
                 console.log(respuestaJson)
-                setListPeople(respuestaJson.results)
+                setPeople(respuestaJson.results)
             }
 
             ({ respuestaJson, response } = await actions.useFetch("/vehicles"))
             if (response.ok) {
                 console.log(respuestaJson)
-                setListVehicles(respuestaJson.results)
+                setVehicles(respuestaJson.results)
             }
 
             ({ respuestaJson, response } = await actions.useFetch("/planets"))
             if (response.ok) {
                 console.log(respuestaJson)
-                setListPlanets(respuestaJson.results)
+                setPlanets(respuestaJson.results)
             }
 
             let promesaPlanets = actions.usefetch2("/planets")
@@ -64,25 +64,25 @@ const StarWars = () => {
             setListPlanets(a.results)
 
             b = await a.json()
-            setListPlanets(b.results)
+            setListVehicles(b.results)
 
             c = await a.json()
-            setListPlanets(c.results)
+            setListPeople(c.results)
         }
         cargaParalelo()
 
     }, [])
 
-    useEffect(() => { }, [listPeople])
-    useEffect(() => { }, [listVehicles])
-    useEffect(() => { }, [listPlanets])
+    useEffect(() => { }, [ListPeople])
+    useEffect(() => { }, [ListVehicles])
+    useEffect(() => { }, [ListPlanets])
 
     return (
         <>
             <h1 className="text-danger">Characters</h1>
-            {listPeople && listPeople.length > 0 ? (
+            {ListPeople && ListPeople.length > 0 ? (
                 <>
-                    {listPeople.map((item, index) => {
+                    {ListPeople.map((item, index) => {
                         return (
                             <CardPeople
                                 key={item.uid}
@@ -95,9 +95,9 @@ const StarWars = () => {
                 <></>
             )}
             <h1 className="text-danger">Planets</h1>
-            {listPlanet && listPlanet.length > 0 ? (
+            {ListPlanets && ListPlanets.length > 0 ? (
                 <>
-                    {listPlanet.map((item, index) => {
+                    {ListPlanets.map((item, index) => {
                         return (
                             <CardPlanets
                                 key={item.uid}
@@ -110,9 +110,9 @@ const StarWars = () => {
                 <></>
             )}
             <h1 className="text-danger">Vehicles</h1>
-            {listVehicle && listVehicle.length > 0 ? (
+            {ListVehicles && ListVehicles.length > 0 ? (
                 <>
-                    {listVehicle.map((item, index) => {
+                    {ListVehicles.map((item, index) => {
                         return (
                             <CardVehicles
                                 key={item.uid}
