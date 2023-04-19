@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import CardPeople from "../component/CardPeople.jsx"
-import CardPlanet from "../component/CardPlanets.jsx";
-import CardVehicles from "../component/cardVehicles.jsx"
+import CardPlanets from "../component/CardPlanets.jsx";
+import CardVehicles from "../component/CardVehicles.jsx"
 
 const StarWars = () => {
     const { store, actions } = useContext(Context)
@@ -39,19 +39,19 @@ const StarWars = () => {
             let { respuestaJson, response } = await actions.useFetch("/people")
             if (response.ok) {
                 console.log(respuestaJson)
-                setPeople(respuestaJson.results)
+                setListPeople(respuestaJson.results)
             }
 
             ({ respuestaJson, response } = await actions.useFetch("/vehicles"))
             if (response.ok) {
                 console.log(respuestaJson)
-                setVehicles(respuestaJson.results)
+                setListVehicles(respuestaJson.results)
             }
 
             ({ respuestaJson, response } = await actions.useFetch("/planets"))
             if (response.ok) {
                 console.log(respuestaJson)
-                setPlanets(respuestaJson.results)
+                setListPlanets(respuestaJson.results)
             }
 
             let promesaPlanets = actions.usefetch2("/planets")
@@ -80,50 +80,54 @@ const StarWars = () => {
     return (
         <>
             <h1 className="text-danger">Characters</h1>
-            {ListPeople && ListPeople.length > 0 ? (
-                <>
-                    {ListPeople.map((item, index) => {
-                        return (
-                            <CardPeople
-                                key={item.uid}
-                                name={item.name}
-                                uid={item.uid} />
-                        );
-                    })}
-                </>
-            ) : (
-                <></>
+            {ListPeople && ListPeople.length > 0 && (
+
+                <div className="container py-2 overflow-auto">
+                    <div className="d-flex flex-row flex-nowrap">
+                        {ListPeople.map((item, index) => {
+                            return (
+                                <CardPeople
+                                    key={index}
+                                    name={item.name}
+                                    uid={item.uid} />
+                            )
+                        })}
+                    </div>
+                </div>
             )}
             <h1 className="text-danger">Planets</h1>
-            {ListPlanets && ListPlanets.length > 0 ? (
-                <>
-                    {ListPlanets.map((item, index) => {
-                        return (
-                            <CardPlanets
-                                key={item.uid}
-                                name={item.name}
-                                uid={item.uid} />
-                        );
-                    })}
-                </>
-            ) : (
-                <></>
+            {ListPlanets && ListPlanets.length > 0 && (
+
+                <div className="container py-2 overflow-auto">
+                    <div className="d-flex flex-row flex-nowrap">
+                        {ListPlanets.map((item, index) => {
+                            return (
+                                <CardPlanets
+                                    key={index}
+                                    name={item.name}
+                                    uid={item.uid} />
+                            )
+                        })}
+                    </div>
+                </div>
             )}
             <h1 className="text-danger">Vehicles</h1>
-            {ListVehicles && ListVehicles.length > 0 ? (
-                <>
-                    {ListVehicles.map((item, index) => {
-                        return (
-                            <CardVehicles
-                                key={item.uid}
-                                name={item.name}
-                                uid={item.uid} />
-                        );
-                    })}
-                </>
-            ) : (
-                <></>
+            {ListVehicles && ListVehicles.length > 0 && (
+
+                <div className="container py-2 overflow-auto">
+                    <div className="d-flex flex-row flex-nowrap">
+                        {ListVehicles.map((item, index) => {
+                            return (
+                                <CardVehicles
+                                    key={index}
+                                    name={item.name}
+                                    uid={item.uid} />
+                            )
+                        })}
+                    </div>
+                </div>
             )}
+
         </>
     )
 };

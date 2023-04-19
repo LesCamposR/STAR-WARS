@@ -8,7 +8,7 @@ import { ToDo } from "./pages/todos.jsx";
 import StarWars from "./pages/starWars.jsx";
 import People from "./component/people.jsx";
 import Planets from "./component/planets.jsx";
-import Vehicles from "./component/vehicles.jsx ";
+import Vehicles from "./component/vehicles.jsx";
 
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
