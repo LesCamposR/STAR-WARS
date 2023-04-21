@@ -16,10 +16,8 @@ export const Navbar = () => {
         <Link to="/">
           <img className="img-responsive h-25 w-25" src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254" />
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
           <div>
             <div className="nav-item dropdown btn btn-warning">
               <div
