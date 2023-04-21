@@ -20,5 +20,11 @@ export function favoritosActions(getStore, getActions, setStore) {
       setStore({ ...store, favoritos: arrTemp }); // [..favoritos, objeto]
       return true;
     },
+    deleteFavorite: async (index) => {
+      let store = getStore();
+      let arrTemp = store.favoritos.slice();
+      arrTemp.splice(index, 1);
+      setStore({ ...store, favoritos: arrTemp });
+    },
   };
 }

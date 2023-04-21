@@ -6,6 +6,10 @@ export const Navbar = () => {
   //<a href="./demo.html">
   const { store, actions } = useContext(Context)
 
+  const handleDelete = (itemIndex) => {
+    actions.deleteFavorite(itemIndex);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -16,22 +20,49 @@ export const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <button type="button" className="btn btn-warning">
-                Favorites <span className="badge text-bg-danger">4</span>
-              </button>
-              <ul className="dropdown-menu dropdown-menu-dark">
-                {store.favoritos && store.favoritos.length > 0 ? <>
-                  {store.favoritos.map((item, index => {
-                    return <Link key={index} to={item.link} className="dropdown-item" href="#">
-                      {item.name}
-                    </Link>
-                  }))}
-                </> : <></>}
+          <div>
+            <div className="nav-item dropdown btn btn-warning">
+              <div
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Favorites
+              </div>
+              <ul
+                className="dropdown-menu list-unstyled"
+                aria-labelledby="navbarDropdown"
+              >
+                {store.favoritos && store.favoritos.length > 0 ? (
+                  <>
+                    {store.favoritos.map((item, index) => {
+                      return (
+                        <>
+                          <React.Fragment key={index}>
+                            <Link to={item.link} className="text-left">
+                              <li className="d-flex align-items-center">
+                                {item.name}
+                              </li>
+                            </Link>
+                            <button
+                              className="btn btn-sm btn-danger"
+                              onClick={() => handleDelete(index)}
+                            >
+                              <i className="fa-solid fa-trash"></i>
+                            </button>
+                          </React.Fragment>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>No favorites yet</>
+                )}
               </ul>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
